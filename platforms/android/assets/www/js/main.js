@@ -4,6 +4,7 @@ Ethereum.Main = (function(){
     var that = {},
     qrModule,
     webInterface,
+    contracts,
     utils;
 
     const SCAN_BUTTON = '#scan-qr-button';
@@ -12,6 +13,7 @@ Ethereum.Main = (function(){
     function init(){
         qrModule = new Ethereum.QRModule();
         webInterface = new Ethereum.Webinterface();
+        contracts = new Ethereum.Contracts(webInterface);
         utils = new Ethereum.Utils();
         addListeners();
     }
@@ -19,6 +21,7 @@ Ethereum.Main = (function(){
     function addListeners(){
         //$(SCAN_BUTTON)[0].addEventListener('click',scanQR);
         $(SHOW_BUTTON)[0].addEventListener('click',getUniqueID);
+        $('#test')[0].addEventListener('click',test);
     }
 
     function scanQR(){
@@ -27,6 +30,10 @@ Ethereum.Main = (function(){
 
     function createQR(value) {
         qrModule.createQR(value);
+    }
+
+    function test(){
+        webInterface.saveContractToServer();
     }
 
     function getUniqueID() {

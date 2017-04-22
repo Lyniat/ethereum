@@ -3,7 +3,7 @@
  global cordova
  */
 var Ethereum = Ethereum || {};
-Ethereum.Contracts = function(){
+Ethereum.Contracts = function(webInterface){
     var that = {},
     contracts = [],
     maxContractNum,
@@ -57,26 +57,6 @@ Ethereum.Contracts = function(){
             }
         }
         contractList = newList;
-    }
-
-    function saveContractToServer(data){
-        data = {
-            owner: "id",
-            partner: "id",
-            timestamp: new Date(),
-            text: "",
-            attachments: new Array()
-        };
-
-        $.ajax({
-            type: "POST",
-            url: Ethereum.Config.SERVER_ADRESS,
-            data: data,
-            /*
-            success: success,
-            dataType: dataType
-            */
-        });
     }
 
     that.removeContract = removeContract;

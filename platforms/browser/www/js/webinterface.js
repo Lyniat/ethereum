@@ -13,6 +13,27 @@ Ethereum.Webinterface = function(){
         });
     }
 
+    function saveContractToServer(data){
+        data = {
+            owner: "id",
+            partner: "id",
+            timestamp: new Date(),
+            text: "",
+            attachments: new Array()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: Ethereum.Config.SERVER_ADRESS,
+            data: data,
+            /*
+             success: success,
+             dataType: dataType
+             */
+        });
+    }
+
+    that.saveContractToServer = saveContractToServer;
     that.getUniqueID = getUniqueID;
     return that;
 };
