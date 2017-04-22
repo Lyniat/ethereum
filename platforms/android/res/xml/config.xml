@@ -16,6 +16,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="http://172.18.3.102:3000" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="false" />

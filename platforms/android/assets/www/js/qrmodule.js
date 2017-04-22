@@ -35,7 +35,8 @@ Ethereum.QRModule = function(){
     }
 
     function createQR(value){
-        new QRCode($(QR_ELEMENT)[0], "testytasty");
+        value = value || 'testy';
+        new QRCode($(QR_ELEMENT)[0], value);
     }
 
     that.scanQR = scanQR;

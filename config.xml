@@ -16,4 +16,6 @@
 
     <preference name="orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="false" />
+
+    <access origin="http://server.nopunkgames.space" />
 </widget>
