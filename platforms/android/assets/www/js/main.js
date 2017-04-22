@@ -53,7 +53,12 @@ Ethereum.Main = (function(){
         window.localStorage.setItem('id',id);
     }
 
+    function resetListeners() {
+        addListeners();
+    }
+
     init();
+    that.resetListeners = resetListeners;
     return that;
 })();
 

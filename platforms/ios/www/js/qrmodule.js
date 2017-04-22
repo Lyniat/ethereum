@@ -29,7 +29,6 @@ Ethereum.QRModule = function(){
             }
         );
 
-        createQR(value);
         return value;
 
     }

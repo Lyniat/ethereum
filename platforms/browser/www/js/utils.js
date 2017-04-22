@@ -10,6 +10,12 @@ Ethereum.Utils = (function(){
         $('#content').load('./'+file);
     }
 
+    function scanQRCode(){
+        var qrModule = new Ethereum.QRModule();
+        qrModule.scanQR();
+    }
+
+    that.scanQRCode = scanQRCode;
     that.loadSite = loadSite;
     return that;
 })();
