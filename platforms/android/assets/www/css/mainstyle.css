@@ -1,0 +1,14 @@
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 100%;
+}
+
+.fix-btn-left {
+    position: fixed;
+    left: 23px;
+
+}
+
