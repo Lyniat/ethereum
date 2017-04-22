@@ -50,7 +50,7 @@
       <true/>
       <key>NSExceptionDomains</key>
       <dict>
-        <key>172.18.3.102</key>
+        <key>server.nopunkgames.space</key>
         <dict>
           <key>NSExceptionAllowsInsecureHTTPLoads</key>
           <true/>

@@ -27,14 +27,21 @@ Ethereum.Main = (function(){
         qrModule.createQR(value);
     }
 
-    function getUniqueID(){
-        Materialize.toast('Fetching unique ID', 3000);
-        webInterface.getUniqueID(onGetID);
+    function getUniqueID() {
+        var value = window.localStorage.getItem('id');
+        if (!value) { //no id local stored
+            Materialize.toast('Fetching unique ID', 3000);
+            webInterface.getUniqueID(onGetID);
+        }else{
+            Materialize.toast('Loaded ID', 3000);
+            createQR(value);
+        }
     }
 
     function onGetID(id){
         Materialize.toast('Fetching ID success!', 3000);
         createQR(id);
+        window.localStorage.setItem('id',id);
     }
 
     init();
