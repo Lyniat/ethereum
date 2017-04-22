@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <!--Import Google Icon Font-->
-    <link href="css/google.css" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/mainstyle.css"/>
+<body class="container">
+    <header>
+        <div class="row">
+            <div class="col offset-s3 s6 offset-s3">
+                <h1 class="flow-text">Upload Identification document</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="row">
+            <form action="#" class="col s12">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload identification document">
+                    </div>
+                </div>
+            </form>
 
-    <title>SmartContract</title>
-</head>
-<body>
-    <header></header>
-    <main></main>
+        </div>
+        <div class="fixed-action-btn">
+            <a onclick="Ethereum.Utils.loadSite ('index.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">trending_flat</i></a>
+        </div>
+    </main>
     <footer></footer>
-
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/qrcode.min.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/qrmodule.js"></script>
-    <script type="text/javascript" src="js/webinterface.js"></script>
-    <script type="text/javascript" src="js/contracts.js"></script>
-    <script type="text/javascript" src="js/utils.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
 </body>
-</html>
