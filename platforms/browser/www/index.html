@@ -32,13 +32,10 @@
             <div id="qr-display">
 
             </div>
-            <div id="test">
-                <button class="btn waves-effect waves-teal">Test Button</button>
-            </div>
 
             <div id="toggle-qr-button">
                 <div class="fixed-action-btn fix-btn-left">
-                    <button class="btn waves-effect waves-teal col offset-s10 s2">QR</button>
+                    <button class="btn waves-effect waves-teal col offset-s10 s2" onclick="main.getUniqueID()">QR</button>
                 </div>
             </div>
 
@@ -63,7 +60,8 @@
         <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
 
-    <script>var contractCreater = new Ethereum.ContractCreater()</script>
+        <script>var main = new Ethereum.Main()</script>
+        <script>var contractCreater = new Ethereum.ContractCreater()</script>
 
     </body>
 </html>

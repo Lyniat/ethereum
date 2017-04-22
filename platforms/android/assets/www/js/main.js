@@ -2,29 +2,22 @@
 var Ethereum = Ethereum || {};
 Ethereum.Config = {};
 Ethereum.Config.SERVER_ADRESS = 'http://server.nopunkgames.space';
-Ethereum.Main = (function(){
+Ethereum.Main = function() {
     var that = {},
-    qrModule,
-    webInterface,
-    contracts;
+        qrModule,
+        webInterface,
+        contracts;
 
     const SCAN_BUTTON = '#scan-qr-partner-button';
     const SHOW_BUTTON = '#toggle-qr-button';
 
-    function init(){
+    function init() {
         qrModule = new Ethereum.QRModule();
         webInterface = new Ethereum.Webinterface();
         contracts = new Ethereum.Contracts(webInterface);
-        addListeners();
     }
 
-    function addListeners(){
-        //$(SCAN_BUTTON)[0].addEventListener('click',scanQR);
-        $(SHOW_BUTTON)[0].addEventListener('click',getUniqueID);
-        $('#test')[0].addEventListener('click',test);
-    }
-
-    function scanQR(){
+    function scanQR() {
         qrModule.scanQR();
     }
 
@@ -32,7 +25,7 @@ Ethereum.Main = (function(){
         qrModule.createQR(value);
     }
 
-    function test(){
+    function test() {
         webInterface.saveContractToServer();
     }
 
@@ -41,16 +34,16 @@ Ethereum.Main = (function(){
         if (!value) { //no id local stored
             Materialize.toast('Fetching unique ID', 3000);
             webInterface.getUniqueID(onGetID);
-        }else{
+        } else {
             Materialize.toast('Loaded ID', 3000);
             createQR(value);
         }
     }
 
-    function onGetID(id){
+    function onGetID(id) {
         Materialize.toast('Fetching ID success!', 3000);
         createQR(id);
-        window.localStorage.setItem('id',id);
+        window.localStorage.setItem('id', id);
     }
 
     function resetListeners() {
@@ -58,6 +51,7 @@ Ethereum.Main = (function(){
     }
 
     init();
+    that.getUniqueID = getUniqueID;
     that.resetListeners = resetListeners;
     return that;
-})();
+};

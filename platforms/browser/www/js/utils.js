@@ -14,7 +14,6 @@ Ethereum.Utils = (function(){
         var qrModule = new Ethereum.QRModule();
         return qrModule.scanQR();
     }
-
     that.scanQRCode = scanQRCode;
     that.loadSite = loadSite;
     return that;
