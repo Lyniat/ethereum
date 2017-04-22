@@ -14,5 +14,6 @@ In your browser, open the file:
     
 ## License
 __QRcode.js__ by __davidshimjs__ https://github.com/davidshimjs/qrcodejs
+
 __Materialize__ by __Dogfalo__ https://github.com/Dogfalo/materialize
 
