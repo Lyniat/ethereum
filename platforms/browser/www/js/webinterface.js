@@ -5,7 +5,7 @@
 var Ethereum = Ethereum || {};
 Ethereum.Webinterface = function(){
     var that = {};
-    const SERVER_ADRESS = 'http://server.nopunkgames.space:3000/create-account';
+    const SERVER_ADRESS = Ethereum.Config.SERVER_ADRESS+':3000/create-account';
 
     function getUniqueID(onCallback){
         $.get( SERVER_ADRESS, function( result ) {

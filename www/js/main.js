@@ -3,7 +3,8 @@ var Ethereum = Ethereum || {};
 Ethereum.Main = (function(){
     var that = {},
     qrModule,
-    webInterface;
+    webInterface,
+    utils;
 
     const SCAN_BUTTON = '#scan-qr-button';
     const SHOW_BUTTON = '#toggle-qr-button';
@@ -11,6 +12,7 @@ Ethereum.Main = (function(){
     function init(){
         qrModule = new Ethereum.QRModule();
         webInterface = new Ethereum.Webinterface();
+        utils = new Ethereum.Utils();
         addListeners();
     }
 
@@ -47,3 +49,6 @@ Ethereum.Main = (function(){
     init();
     return that;
 })();
+
+Ethereum.Config = {};
+Ethereum.Config.SERVER_ADRESS = 'server.nopunkgames.space';
