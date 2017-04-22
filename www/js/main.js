@@ -10,8 +10,8 @@ Ethereum.Main = function(){
     }
 
     function addListeners(){
-        $('scan-qr-button')[0].addEventListener('click',scanQR);
-        $('show-qr-button').addEventListener('click',createQR);
+        $('#scan-qr-button')[0].addEventListener('click',scanQR);
+        $('#show-qr-button').addEventListener('click',createQR);
     }
 
     function scanQR(){
