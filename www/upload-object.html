@@ -12,8 +12,8 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Note</label>
+                        <textarea id="notes" class="materialize-textarea"></textarea>
+                        <label for="notes">Note</label>
                     </div>
                 </div>
             </form>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="fixed-action-btn">
-            <a onclick="Ethereum.Utils.loadSite ('QRScanPartner.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">trending_flat</i></a>
+            <a onclick="(function(){contractCreater.addContractData(); Ethereum.Utils.loadSite ('QRScanPartner.html');})()" class="btn-floating waves-effect waves-light red"><i class="material-icons">trending_flat</i></a>
         </div>
     </main>
     <footer></footer>

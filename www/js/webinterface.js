@@ -13,7 +13,8 @@ Ethereum.Webinterface = function(){
         });
     }
 
-    function saveContractToServer(data){
+    function saveContractToServer(data,onSuccess){
+        /*
         data = {
             owner: "id",
             partner: "id",
@@ -21,16 +22,18 @@ Ethereum.Webinterface = function(){
             text: "",
             attachments: new Array()
         };
+        */
 
+        var text = JSON.stringify(data);
+        console.log(data);
         $.ajax({
             type: "POST",
-            url: Ethereum.Config.SERVER_ADRESS,
-            data: data,
-            /*
-             success: success,
-             dataType: dataType
-             */
-        });
+            url: 'http://server.nopunkgames.space:3000/',
+            data: text,
+            success: onSuccess,
+            contentType: "application/json",
+            });
+        //$.post(Ethereum.Config.SERVER_ADRESS+':3000',text);
     }
 
     that.saveContractToServer = saveContractToServer;

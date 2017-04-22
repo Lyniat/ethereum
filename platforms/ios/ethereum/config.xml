@@ -32,6 +32,7 @@
     <content src="index.html" />
     <access origin="*" />
     <access origin="http://server.nopunkgames.space" />
+    <access origin="http://172.18.3.102" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />

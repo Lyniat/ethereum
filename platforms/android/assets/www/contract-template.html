@@ -35,20 +35,20 @@
                 <div class="row">
                     <div class="col s12 flow-text">
                         Borrowing date:
-                        <input type="date" class="datepicker">
+                        <input type="date" class="datepicker" id="borrow-date">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 flow-text">
                         Returnable date:
-                        <input type="date" class="datepicker">
+                        <input type="date" class="datepicker" id="return-date">
                     </div>
                 </div>
             </form>
 
 
             <div class="fixed-action-btn">
-                <a onclick="Ethereum.Utils.loadSite ('upload-object.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">trending_flat</i></a>
+                <a onclick="(function(){contractCreater.createContract(); Ethereum.Utils.loadSite ('upload-object.html');})()" class="btn-floating waves-effect waves-light red"><i class="material-icons">trending_flat</i></a>
             </div>
         </div>
 

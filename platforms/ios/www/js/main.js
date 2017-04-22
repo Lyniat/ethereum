@@ -1,11 +1,12 @@
 'use strict'
 var Ethereum = Ethereum || {};
+Ethereum.Config = {};
+Ethereum.Config.SERVER_ADRESS = 'http://server.nopunkgames.space';
 Ethereum.Main = (function(){
     var that = {},
     qrModule,
     webInterface,
-    contracts,
-    utils;
+    contracts;
 
     const SCAN_BUTTON = '#scan-qr-partner-button';
     const SHOW_BUTTON = '#toggle-qr-button';
@@ -14,7 +15,6 @@ Ethereum.Main = (function(){
         qrModule = new Ethereum.QRModule();
         webInterface = new Ethereum.Webinterface();
         contracts = new Ethereum.Contracts(webInterface);
-        utils = new Ethereum.Utils();
         addListeners();
     }
 
@@ -61,6 +61,3 @@ Ethereum.Main = (function(){
     that.resetListeners = resetListeners;
     return that;
 })();
-
-Ethereum.Config = {};
-Ethereum.Config.SERVER_ADRESS = 'server.nopunkgames.space';
