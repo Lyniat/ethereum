@@ -5,16 +5,16 @@ Ethereum.Main = (function(){
     qrModule;
 
     const SCAN_BUTTON = '#scan-qr-button';
+    const SHOW_BUTTON = '#toggle-qr-button';
 
     function init(){
         qrModule = new Ethereum.QRModule();
         addListeners();
-        createQR();
     }
 
     function addListeners(){
-        $(SCAN_BUTTON)[0].addEventListener('click',scanQR);
-        //$('#show-qr-button')[0].addEventListener('click',createQR);
+        //$(SCAN_BUTTON)[0].addEventListener('click',scanQR);
+        $(SHOW_BUTTON)[0].addEventListener('click',createQR);
     }
 
     function scanQR(){
