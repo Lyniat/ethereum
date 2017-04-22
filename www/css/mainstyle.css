@@ -1,5 +1,11 @@
+header {
+    background-color:#F44336;
+}
+
 h1 {
-    font-size: 150%;
+    font-size: 225% !important;
+    color: white;
+    text-align: center;
 }
 
 h2 {
@@ -9,6 +15,6 @@ h2 {
 .fix-btn-left {
     position: fixed;
     left: 23px;
-
 }
+
 

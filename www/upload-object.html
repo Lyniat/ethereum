@@ -1,12 +1,12 @@
-<body class="container">
+<body>
     <header>
         <div class="row">
-            <div class="col offset-s3 s6 offset-s3">
+            <div class="col s12">
                 <h1 class="flow-text">Setup Contracts</h1>
             </div>
         </div>
     </header>
-    <main>
+    <main class="container">
 
         <div class="row">
             <form class="col s12">
@@ -33,8 +33,13 @@
 
         </div>
 
+        <div class="fixed-action-btn fix-btn-left">
+            <a onclick="Ethereum.Utils.loadSite ('contract-template.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+        </div>
+
         <div class="fixed-action-btn">
-            <a onclick="(function(){contractCreater.addContractData(); Ethereum.Utils.loadSite ('QRScanPartner.html');})()" class="btn-floating waves-effect waves-light red"><i class="material-icons">trending_flat</i></a>
+            <a onclick="(function(){contractCreater.addContractData(); Ethereum.Utils.loadSite ('QRScanPartner.html');})()" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
+
         </div>
     </main>
     <footer></footer>
