@@ -40,4 +40,4 @@ Ethereum.QRModule = function(){
     that.scanQR = scanQR;
     that.createQR = createQR;
     return that;
-}();
+};

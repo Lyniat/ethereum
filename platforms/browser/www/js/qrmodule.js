@@ -1,4 +1,7 @@
 'use strict'
+/*
+ global cordova
+ */
 var Ethereum = Ethereum || {};
 Ethereum.QRModule = function(){
     var that = {};
@@ -37,4 +40,4 @@ Ethereum.QRModule = function(){
     that.scanQR = scanQR;
     that.createQR = createQR;
     return that;
-}();
+};

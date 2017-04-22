@@ -1,6 +1,6 @@
 'use strict'
 var Ethereum = Ethereum || {};
-Ethereum.Main = function(){
+Ethereum.Main = (function(){
     var that = {},
     qrModule;
 
@@ -10,8 +10,8 @@ Ethereum.Main = function(){
     }
 
     function addListeners(){
-        $('scan-qr-button')[0].addEventListener('click',scanQR);
-        $('show-qr-button').addEventListener('click',createQR);
+        $('#scan-qr-button')[0].addEventListener('click',scanQR);
+        //$('#show-qr-button')[0].addEventListener('click',createQR);
     }
 
     function scanQR(){
@@ -24,4 +24,4 @@ Ethereum.Main = function(){
 
     init();
     return that;
-}();
+})();
