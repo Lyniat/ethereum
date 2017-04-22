@@ -12,4 +12,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
 </widget>

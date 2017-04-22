@@ -20,6 +20,9 @@
     "installed_plugins": {
         "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "space.nopunkgames.ethereum"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "space.nopunkgames.ethereum"
         }
     },
     "dependent_plugins": {},
@@ -37,9 +40,24 @@
             "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
             "pluginId": "phonegap-plugin-barcodescanner",
             "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "id": "cordova-plugin-statusbar.statusbar",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-statusbar/src/browser/StatusBarProxy.js",
+            "id": "cordova-plugin-statusbar.StatusBarProxy",
+            "pluginId": "cordova-plugin-statusbar",
+            "runs": true
         }
     ],
     "plugin_metadata": {
-        "phonegap-plugin-barcodescanner": "6.0.6"
+        "phonegap-plugin-barcodescanner": "6.0.6",
+        "cordova-plugin-statusbar": "2.2.2"
     }
 }

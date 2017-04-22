@@ -10,6 +10,9 @@
         "phonegap-plugin-barcodescanner": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "space.nopunkgames.ethereum"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "space.nopunkgames.ethereum"
         }
     },
     "dependent_plugins": {}

@@ -9,6 +9,7 @@ Ethereum.Main = (function(){
     function init(){
         qrModule = new Ethereum.QRModule();
         addListeners();
+        createQR();
     }
 
     function addListeners(){

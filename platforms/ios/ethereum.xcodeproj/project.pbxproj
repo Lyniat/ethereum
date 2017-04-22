@@ -26,6 +26,7 @@
 		D8A848973C4A4E6E8D89C89B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44514D381D684CD895E1D09A /* QuartzCore.framework */; };
 		381E0A0AA94F414E84393692 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707162245002492D9DC7E0DE /* CoreImage.framework */; };
 		64E7048920904C21A093943C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210FAC2B062A4130991FCABC /* AudioToolbox.framework */; };
+		F3474C5B329A4586A21CEC9C /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B838E3219ED4AF9907810F3 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		44514D381D684CD895E1D09A /* QuartzCore.framework */ = {isa = PBXFileReference; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		707162245002492D9DC7E0DE /* CoreImage.framework */ = {isa = PBXFileReference; name = "CoreImage.framework"; path = "System/Library/Frameworks/CoreImage.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		210FAC2B062A4130991FCABC /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		0B838E3219ED4AF9907810F3 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B7619525427B4FAD896EF141 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				A075EBA0479B485EAD8528EB /* CDVBarcodeScanner.mm */,
 				4B548FB4BD77444D92B97B54 /* zxing-all-in-one.cpp */,
 				30A572A366B24C65B532FD2F /* zxing-all-in-one.h */,
+				0B838E3219ED4AF9907810F3 /* CDVStatusBar.m */,
+				B7619525427B4FAD896EF141 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "ethereum/Plugins";
@@ -313,6 +318,7 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				8BAA8D4A4596462E97335C91 /* CDVBarcodeScanner.mm in Resources */,
 				423CB6EB769E4A6BB8C44416 /* zxing-all-in-one.cpp in Resources */,
+				F3474C5B329A4586A21CEC9C /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
