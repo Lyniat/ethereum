@@ -7,7 +7,7 @@ Ethereum.Main = (function(){
     contracts,
     utils;
 
-    const SCAN_BUTTON = '#scan-qr-button';
+    const SCAN_BUTTON = '#scan-qr-partner-button';
     const SHOW_BUTTON = '#toggle-qr-button';
 
     function init(){
