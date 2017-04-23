@@ -50,7 +50,7 @@ app.post('/new-contract', function (req, res) {
 
 app.post('/contract-data', function (req, res) {
     var transID = req.body.address;
-
+    console.log("transID "+transID);
     getContractData(transID, function(result) {
         console.log(result);
         res.send(result);
@@ -62,6 +62,7 @@ app.post('/contracts', function (req, res) {
     var contracts = [];
     var counter = 0;
 
+    console.log(userAddress);
     console.log(users);
 
     if(!users[userAddress] || !users[userAddress]['transactions']) res.send("No transactions");
