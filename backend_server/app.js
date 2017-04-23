@@ -89,7 +89,7 @@ app.post('/identity-data', function (req, res) {
 
 app.post('/new-account', function (req, res) {
     var data = req.body.data;
-
+    console.log(data);
     var options = {
       mode: 'text',
       args: ['accounts', accountCounter++]
@@ -98,6 +98,7 @@ app.post('/new-account', function (req, res) {
     PythonShell.run('smartContract.py', options, function (err, result) {
         if (err) res.send(err);
         userAddress = result[0];
+        console.log(userAddress);
         users[userAddress] = {
             'identityData': data
         };
