@@ -5,11 +5,20 @@
 var Ethereum = Ethereum || {};
 Ethereum.Webinterface = function(){
     var that = {};
-    const SERVER_ADRESS = Ethereum.Config.SERVER_ADRESS+':3000/create-account';
+    const SERVER_ADRESS = Ethereum.Config.SERVER_ADRESS+':3000/new-account';
 
-    function getUniqueID(onCallback){
+    function getUniqueID(id,onCallback){
+        /*
         $.get( SERVER_ADRESS, function( result ) {
             onCallback(result);
+        });
+        */
+        $.ajax({
+            type: "POST",
+            url: SERVER_ADRESS,
+            data: '{"identityData":'+id+'}',
+            success: onCallback,
+            contentType: "application/json",
         });
     }
 

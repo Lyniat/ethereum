@@ -81,23 +81,17 @@
                 </div>
             </div>
 
-            <!--<div class="row">
-                <div id="qr-display" class="col s12">
-
-                </div>
-            </div>-->
-
-            <!--<div class="row">
-                <div id="test" class="s4 offset-s8">
-                    <button class="btn waves-effect waves-teal">Test Button</button>
-                </div>
-            </div>-->
-
             <div id="toggle-qr-button">
                 <div class="fixed-action-btn fix-btn-left">
-                    <button class="btn waves-effect waves-teal col offset-s10 s2" onclick="main.getUniqueID(); Ethereum.Utils.loadSite ('qr-display.html')">
+                    <button class="btn waves-effect waves-teal col offset-s10 s2" onclick="(function(){Ethereum.Utils.loadSite ('qr-display.html');})()">
                        QR
                     </button>
+                </div>
+            </div>
+
+            <div id="upload-id-document">
+                <div class="fixed-action-btn fix-btn-center">
+                    <button class="btn waves-effect waves-teal" onclick="Ethereum.Utils.loadSite ('id-upload.html')">ID</button>
                 </div>
             </div>
 
