@@ -8,7 +8,7 @@ var PythonShell = require('python-shell');
 var PORT = 3000;
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 var accountCounter = 0;
 var users = {};
@@ -89,7 +89,6 @@ app.post('/identity-data', function (req, res) {
 
 app.post('/new-account', function (req, res) {
     var data = req.body.data;
-
     var options = {
       mode: 'text',
       args: ['accounts', accountCounter++]
