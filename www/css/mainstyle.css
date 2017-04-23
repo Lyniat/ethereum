@@ -9,12 +9,30 @@ h1 {
 }
 
 h2 {
-    font-size: 100%;
+    font-size: 200% !important;
+    font-weight: bold !important;
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+img {
+    max-width: 80% !important;
 }
 
 .fix-btn-left {
     position: fixed;
     left: 23px;
+}
+
+.card-title {
+    font-size: 115%;
+}
+
+.date {
+    font-size: 80%;
 }
 
 

@@ -1,18 +1,18 @@
 <body>
     <header>
         <div class="row">
-            <div class="col s12">
+            <div class="col s4">
+                <img class="circle responsive-img" src="img/logo_hackathon.png">
+            </div>
+            <div class="col s8">
                 <h1 class="flow-text">Lend</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12">
-                <h2 class="flow-text red lighten-3">Contract guidelines</h2>
-            </div>
-        </div>
+
     </header>
 
     <main class="container">
+        <h2 class="flow-text">Contract guidelines</h2>
         <div id="guideline-text" class="flow-text">
             <p>
                 The Following template helps you to create a Contract between you and your contract partner.
@@ -24,6 +24,9 @@
             <p>
                 Also make sure to upload a photo and precise description of its state.
             </p>
+        </div>
+        <div class="fixed-action-btn fix-btn-left">
+            <a onclick="Ethereum.Utils.loadSite ('contract-selection.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
         </div>
         <div class="fixed-action-btn">
             <a onclick="Ethereum.Utils.loadSite ('contract-template.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
