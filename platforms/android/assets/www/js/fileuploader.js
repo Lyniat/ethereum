@@ -7,15 +7,36 @@ Ethereum.FileUploader = function() {
 
     var that = {};
 
-    function getFile(id,onLoaded){
+    const CANVAS_SIZE = 500;
+
+    function getFile(id,loaded){
         var file = $('#'+id)[0].files[0]
 
         console.log(file);
 
         var reader  = new FileReader();
 
-        reader.onloadend = function () {
-            onLoaded(reader.result);
+        reader.onload = function () {
+            //onLoaded(reader.result);
+            var newCanvas = document.createElement('canvas');
+            var context =  newCanvas.getContext('2d');
+
+            context.canvas.width  = CANVAS_SIZE;
+            context.canvas.height = CANVAS_SIZE;
+
+            context.fillStyle = "white";
+            context.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+            var img = new Image();
+            img.src = reader.result;
+            img.onload = function() {
+                //console.log(reader.result);
+                context.drawImage(img,0,0,CANVAS_SIZE, CANVAS_SIZE);
+
+                var png = newCanvas.toDataURL();
+                //window.open(png);
+                loaded(png);
+            };
         };
 
         if (file) {
