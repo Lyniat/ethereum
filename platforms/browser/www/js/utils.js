@@ -5,9 +5,14 @@
 var Ethereum = Ethereum || {};
 Ethereum.Utils = (function(){
     var that = {};
-    function loadSite(file){
+    function loadSite(file,onLoaded){
         $('#content')[0].innerHTML = '';
-        $('#content').load('./'+file);
+        $('#content').load('./'+file,null,function(){
+            if(!onLoaded){
+                return;
+            }
+            onLoaded();
+        });
     }
 
     function scanQRCode(){

@@ -38,7 +38,7 @@
 
         <div id="toggle-qr-button">
             <div class="fixed-action-btn fix-btn-left">
-                <button class="btn waves-effect waves-teal col offset-s10 s2" onclick="main.getUniqueID(); Ethereum.Utils.loadSite ('qr-display.html')">
+                <button class="btn waves-effect waves-teal col offset-s10 s2" onclick="(function(){Ethereum.Utils.loadSite ('qr-display.html',main.getUniqueID);})()">
                     QR
                 </button>
             </div>
