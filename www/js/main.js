@@ -1,7 +1,7 @@
 'use strict'
 var Ethereum = Ethereum || {};
 Ethereum.Config = {};
-Ethereum.Config.SERVER_ADRESS = 'http://192.168.42.203';//'http://server.nopunkgames.space';
+Ethereum.Config.SERVER_ADRESS = 'http://172.18.1.218';//'http://server.nopunkgames.space';
 Ethereum.Main = function() {
     var that = {},
         qrModule,
@@ -17,7 +17,7 @@ Ethereum.Main = function() {
         webInterface = new Ethereum.Webinterface();
         contracts = new Ethereum.Contracts(webInterface);
         getContracts();
-        Ethereum.Utils.loadSite('welcome.html');
+        //Ethereum.Utils.loadSite('welcome.html');
     }
 
     function scanQR() {
@@ -45,7 +45,7 @@ Ethereum.Main = function() {
     }
 
     function getUniqueID(idImage) {
-        var value = window.localStorage.getItem('id');
+        var value;// = window.localStorage.getItem('id');
         if (!value) { //no id local stored
             Materialize.toast('Fetching unique ID', 3000);
             webInterface.getUniqueID(idImage,onGetID);
@@ -65,6 +65,7 @@ Ethereum.Main = function() {
         Materialize.toast('Fetching ID success!', 3000);
         createQR(id);
         window.localStorage.setItem('id', id);
+        console.log(id);
     }
 
     function resetListeners() {
