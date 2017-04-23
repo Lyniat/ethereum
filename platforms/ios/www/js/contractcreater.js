@@ -36,11 +36,21 @@ Ethereum.ContractCreater = function(){
         webInterface.saveContractToServer(contract,onSuccess);
     }
 
+    function uploadFile(id){
+        var uploader = new Ethereum.FileUploader();
+        uploader.getFile(id,onFileUploaded);
+    }
+
     function onSuccess(){
         Materialize.toast('Uploading successful!', 3000);
         Ethereum.Utils.loadSite('main-index.html');
     }
 
+    function onFileUploaded(file){
+        contract['file'] = file;
+    }
+
+    that.uploadFile = uploadFile;
     that.addContractData = addContractData;
     that.addQRCode = addQRCode;
     that.createContract = createContract;

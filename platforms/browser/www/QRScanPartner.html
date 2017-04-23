@@ -1,15 +1,21 @@
-<body class="container">
+<body>
     <header>
         <div class="row">
-            <div class="col offset-s3 s6 offset-s3">
-                <h1 class="flow-text">QR-Scan</h1>
-            </div>
+        <div class="col s4">
+            <img class="circle responsive-img" src="img/logo_hackathon.png">
         </div>
+        <div class="col s8">
+            <h1 class="flow-text">QR-Scan</h1>
+        </div>
+    </div>
     </header>
-    <main>
+    <main class="container">
         <p class="flow-text">You have to scan the QR-Code of your partner now.</p>
         <div id="scan-qr-partner-button" onclick="contractCreater.addQRCode()">
             <button class="btn waves-effect waves-teal">Start QR-Scan</button>
+        </div>
+        <div class="fixed-action-btn fix-btn-left">
+            <a onclick="Ethereum.Utils.loadSite ('upload-object.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
         </div>
         <div class="fixed-action-btn">
             <button class="btn waves-effect waves-light" type="submit" name="action" onclick="contractCreater.uploadContract()">Save</button>

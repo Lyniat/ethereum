@@ -12,10 +12,16 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "space.nopunkgames.ethereum"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "space.nopunkgames.ethereum"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "space.nopunkgames.ethereum"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "space.nopunkgames.ethereum"
         }
     }
