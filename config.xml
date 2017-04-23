@@ -16,6 +16,6 @@
     <preference name="orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <access origin="http://server.nopunkgames.space" />
-    <access origin="http://172.18.3.102" />
+    <access origin="http://172.18.1.218" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.2" />
 </widget>

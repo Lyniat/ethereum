@@ -49,12 +49,23 @@ Ethereum.Webinterface = function(){
         $.ajax({
             type: "POST",
             url: Ethereum.Config.SERVER_ADRESS+':3000/contracts/',
-            data: '{"address":'+id+'}',
+            data: '{"address":"'+id+'"}',
             success: onCallback,
             contentType: "application/json",
         });
     }
 
+    function getContractByID(id,onCallback){
+        $.ajax({
+            type: "POST",
+            url: Ethereum.Config.SERVER_ADRESS+':3000/contract-data/',
+            data: '{"address":"'+id+'"}',
+            success: onCallback,
+            contentType: "application/json",
+        });
+    }
+
+    that.getContractByID = getContractByID;
     that.getContracts = getContracts;
     that.saveContractToServer = saveContractToServer;
     that.getUniqueID = getUniqueID;

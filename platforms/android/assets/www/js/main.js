@@ -17,7 +17,7 @@ Ethereum.Main = function() {
         webInterface = new Ethereum.Webinterface();
         contracts = new Ethereum.Contracts(webInterface);
         getContracts();
-        //Ethereum.Utils.loadSite('welcome.html');
+        Ethereum.Utils.loadSite('main-index.html');
     }
 
     function scanQR() {
@@ -37,6 +37,8 @@ Ethereum.Main = function() {
     }
 
     function onContracts(contracts){
+        var contractID = contracts[0];
+        getContractByID(contractID);
         console.log(contracts);
     }
 
@@ -44,8 +46,12 @@ Ethereum.Main = function() {
         webInterface.saveContractToServer();
     }
 
+    function getContractByID(id){
+        webInterface.getContractByID(id,onGetContractByID);
+    }
+
     function getUniqueID(idImage) {
-        var value;// = window.localStorage.getItem('id');
+        var value = window.localStorage.getItem('id');
         if (!value) { //no id local stored
             Materialize.toast('Fetching unique ID', 3000);
             webInterface.getUniqueID(idImage,onGetID);
@@ -53,6 +59,13 @@ Ethereum.Main = function() {
             Materialize.toast('Loaded ID', 3000);
             createQR(value);
         }
+    }
+
+    function onGetContractByID(contract){
+        var owner = contract.owner;
+        var partner = contract.partner;
+        var text = contract.text;
+        $('#contract-date')[0].innerHTML = '' +owner + ' and ' + partner;
     }
 
     function uploadIDImage(id){
@@ -73,6 +86,7 @@ Ethereum.Main = function() {
     }
 
     init();
+    that.getContractByID = getContractByID;
     that.uploadIDImage = uploadIDImage;
     that.getUniqueID = getUniqueID;
     that.resetListeners = resetListeners;
