@@ -15,7 +15,7 @@
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>File</span>
-                        <input type="file" multiple>
+                        <input type="file" multiple id="object-uploader" onchange="main.uploadIDImage('object-uploader')">
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Upload identification document">
@@ -25,7 +25,7 @@
 
         </div>
         <div class="fixed-action-btn">
-            <a onclick="Ethereum.Utils.loadSite ('index.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
+            <a onclick="Ethereum.Utils.loadSite ('main-index.html')" class="btn-floating waves-effect waves-light red"><i class="material-icons">arrow_forward</i></a>
         </div>
     </main>
     <footer></footer>

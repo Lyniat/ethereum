@@ -8,7 +8,7 @@ var PythonShell = require('python-shell');
 var PORT = 3000;
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 var accountCounter = 0;
 var users = {};
@@ -50,7 +50,7 @@ app.post('/new-contract', function (req, res) {
 
 app.post('/contract-data', function (req, res) {
     var transID = req.body.address;
-
+    console.log("transID "+transID);
     getContractData(transID, function(result) {
         console.log(result);
         res.send(result);
@@ -62,6 +62,7 @@ app.post('/contracts', function (req, res) {
     var contracts = [];
     var counter = 0;
 
+    console.log(userAddress);
     console.log(users);
 
     if(!users[userAddress] || !users[userAddress]['transactions']) res.send("No transactions");
@@ -89,7 +90,9 @@ app.post('/identity-data', function (req, res) {
 
 app.post('/new-account', function (req, res) {
     var data = req.body.data;
+
     console.log(data);
+
     var options = {
       mode: 'text',
       args: ['accounts', accountCounter++]
