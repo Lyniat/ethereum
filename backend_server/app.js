@@ -65,12 +65,15 @@ app.post('/contracts', function (req, res) {
     }
 });
 
-app.get('/identification', function (req, res) {
-    
+app.post('/identity-data', function (req, res) {
+    var userAddress = req.body.address;
+    var identityData = users[userAddress]['identityData'];
+    res.send(identityData);
 });
 
 app.post('/new-account', function (req, res) {
-    
+    var data = req.body.data;
+
     var options = {
       mode: 'text',
       args: ['accounts', accountCounter++]
@@ -78,7 +81,11 @@ app.post('/new-account', function (req, res) {
 
     PythonShell.run('smartContract.py', options, function (err, result) {
         if (err) res.send(err);
-        res.send(result[0]);
+        userAddress = result[0];
+        users[userAddress] = {
+            'identityData': data
+        };
+        res.send(userAddress);
     });
 });
 
