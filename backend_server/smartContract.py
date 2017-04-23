@@ -39,8 +39,8 @@ RPC_PORT = 8545
 GAS = 20000000
 IMAGE_SIZE = 256
 
-CONTRACT_STORAGE_ADDRESS = "0x797aab23acf20c54080b939cebca6981080cd3b7"
-USER_STORAGE_ADDRESS = "0x6eda257dcaa14c0532a943078d8be78058d255f7"
+CONTRACT_STORAGE_ADDRESS = "0x31033b6fdee1e1ea9545aac3347eb504f6167ad2"
+USER_STORAGE_ADDRESS = "0x2bdf5f4d0a23c14251a6113a842f8a24baae26f5"
 
 counter = 0
 
@@ -98,7 +98,7 @@ def main():
 
 
     elif method == "contractData":
-        trans_addr = "0x4ffc50cd604954b137a7dcf4b3be6678a6ef91ef9eeb42e908b985afceaf601e"
+        trans_addr = sys.argv[2]
         trans = rpc.eth_getTransactionByHash(trans_addr)
         res = Decoder.decodeABI(trans['input'], 'createNewContract(string,string)', ['string','string'])
         print(res)
