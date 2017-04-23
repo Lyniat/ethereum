@@ -29,6 +29,11 @@ img {
     left: 23px;
 }
 
+.fix-btn-center {
+    position: fixed;
+    left: 175px;
+}
+
 .card-title {
     font-size: 115%;
 }
