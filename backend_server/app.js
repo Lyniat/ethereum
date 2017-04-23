@@ -18,22 +18,30 @@ app.post('/new-contract', function (req, res) {
     var partner = req.body.partner;
     var text = req.body.text;
 
+    console.log('newContract');
+
     var options = {
       args: ['newContract', owner, partner, text]
     };
 
     PythonShell.run('smartContract.py', options, function (err, results) {
-      if (err) throw err;
+      if (err) res.send(err);
       var transID = results[0];
-      if(!users[owner]) {
-        users[owner] = [transID]
+
+      if(!users[owner]) users[owner] = {};
+
+      if(!users[owner]['transactions']) {
+        users[owner]['transactions'] = [transID]
       } else {
-        users[owner].push(transID)
+        users[owner]['transactions'].push(transID)
       }
-      if(!users[partner]) {
-        users[partner] = [transID]
+
+      if(!users[partner]) users[partner] = {};
+
+      if(!users[partner]['transactions']) {
+        users[partner]['transactions'] = [transID]
       } else {
-        users[partner].push(transID)
+        users[partner]['transactions'].push(transID)
       }
       //console.log(users);
       res.send(users);
@@ -42,6 +50,7 @@ app.post('/new-contract', function (req, res) {
 
 app.post('/contract-data', function (req, res) {
     var transID = req.body.address;
+
     getContractData(transID, function(result) {
         console.log(result);
         res.send(result);
@@ -53,12 +62,19 @@ app.post('/contracts', function (req, res) {
     var contracts = [];
     var counter = 0;
 
-    for(id in users[userAddress]) {
-        var transID = users[userAddress].id;
+    console.log(users);
+
+    if(!users[userAddress] || !users[userAddress]['transactions']) res.send("No transactions");
+
+    for(id in users[userAddress]['transactions']) {
+
+        var transID = users[userAddress]['transactions'][id];
+        console.log(transID);
+
         getContractData(transID, function(result) {
             counter ++;
             contracts.push(result);
-            if (counter == users[userAddress].length) {
+            if (counter == users[userAddress]['transactions'].length) {
                 res.send(contracts);
             }
         })
@@ -99,7 +115,7 @@ function getContractData(transID, callback) {
     };
 
     PythonShell.run('smartContract.py', options, function (err, result) {
-      if (err) throw err;
+      if (err) callback(err);
       callback(result);
     });
 }
