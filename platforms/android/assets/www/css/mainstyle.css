@@ -1,14 +1,55 @@
+header {
+    background-color:#F44336;
+}
+
 h1 {
-    font-size: 150%;
+    /*font-size: 225% !important;*/
+    font-size: 8vw !important;
+    color: white;
+    /*float: left;*/
+    text-align: center;
 }
 
 h2 {
-    font-size: 100%;
+    font-size: 200% !important;
+    font-weight: bold !important;
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+img {
+    max-width: 100% !important;
+    /*size: 2vw;*/
+    display: block;
+    margin: auto;
 }
 
 .fix-btn-left {
     position: fixed;
     left: 23px;
-
 }
+
+.card-title {
+    font-size: 115%;
+}
+
+.date {
+    font-size: 80%;
+}
+
+@media screen and (min-width: 768px){
+    img {
+        max-width: 50% !important;
+        /*size: 2vw;*/
+        display: block;
+        margin: auto;
+    }
+}
+
+
+
+
 

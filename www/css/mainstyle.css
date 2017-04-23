@@ -3,7 +3,7 @@ header {
 }
 
 h1 {
-    font-size: 225% !important;
+    font-size: 8vw !important;
     color: white;
     text-align: center;
 }
@@ -19,12 +19,19 @@ a {
 }
 
 img {
-    max-width: 80% !important;
+    max-width: 100% !important;
+    display: block;
+    margin: auto;
 }
 
 .fix-btn-left {
     position: fixed;
     left: 23px;
+}
+
+.fix-btn-center {
+    position: fixed;
+    left: 175px;
 }
 
 .card-title {
@@ -34,5 +41,17 @@ img {
 .date {
     font-size: 80%;
 }
+
+@media screen and (min-width: 768px){
+    img {
+        max-width: 50% !important;
+        /*size: 2vw;*/
+        display: block;
+        margin: auto;
+    }
+}
+
+
+
 
 

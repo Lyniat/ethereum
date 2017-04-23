@@ -29,6 +29,7 @@ Ethereum.QRModule = function(){
             }
         );
 
+        Materialize.toast(value, 3000);
         return value;
 
     }

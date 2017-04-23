@@ -1,12 +1,13 @@
 'use strict'
 var Ethereum = Ethereum || {};
 Ethereum.Config = {};
-Ethereum.Config.SERVER_ADRESS = 'http://server.nopunkgames.space';
+Ethereum.Config.SERVER_ADRESS = 'http://172.18.3.102';//'http://server.nopunkgames.space';
 Ethereum.Main = function() {
     var that = {},
         qrModule,
         webInterface,
-        contracts;
+        contracts,
+        ID;
 
     const SCAN_BUTTON = '#scan-qr-partner-button';
     const SHOW_BUTTON = '#toggle-qr-button';
@@ -15,6 +16,7 @@ Ethereum.Main = function() {
         qrModule = new Ethereum.QRModule();
         webInterface = new Ethereum.Webinterface();
         contracts = new Ethereum.Contracts(webInterface);
+        getContracts();
     }
 
     function scanQR() {
@@ -23,6 +25,18 @@ Ethereum.Main = function() {
 
     function createQR(value) {
         qrModule.createQR(value);
+    }
+
+    function getContracts(){
+        ID = window.localStorage.getItem('id');
+        if(!ID){
+            return;
+        }
+        webInterface.getContracts(ID,onContracts);
+    }
+
+    function onContracts(contracts){
+        console.log(contracts);
     }
 
     function test() {
@@ -41,13 +55,14 @@ Ethereum.Main = function() {
     }
 
     function onGetID(id) {
+        ID = id;
         Materialize.toast('Fetching ID success!', 3000);
         createQR(id);
         window.localStorage.setItem('id', id);
     }
 
     function resetListeners() {
-        addListeners();
+        //addListeners();
     }
 
     init();
