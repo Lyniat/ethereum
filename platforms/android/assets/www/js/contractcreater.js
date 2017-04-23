@@ -18,11 +18,13 @@ Ethereum.ContractCreater = function(){
         information['borrowDate'] = $('#borrow-date').val();
         information['returnDate'] = $('#return-date').val();
         contract['partner'] = 'not scanned';
+        contract['owner'] = 'no information';
 
         contract['text'] = "Contract between "+information['firstPersonName']+" and "+information['secondPersonName']+". Object that will be lend: "+information['objectName']+". Borrowing date: "+information['borrowDate']+". Returnable date: "+information['returnDate'];
     }
 
     function addContractData(){
+        contract['owner'] = window.localStorage.getItem('id') || 'no information';
         contract['notes'] =  $('#notes').val();
     }
 

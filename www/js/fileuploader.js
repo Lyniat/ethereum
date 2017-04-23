@@ -7,7 +7,7 @@ Ethereum.FileUploader = function() {
 
     var that = {};
 
-    const CANVAS_SIZE = 500;
+    const CANVAS_SIZE = 300;
 
     function getFile(id,loaded){
         var file = $('#'+id)[0].files[0]

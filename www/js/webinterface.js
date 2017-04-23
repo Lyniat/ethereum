@@ -5,11 +5,20 @@
 var Ethereum = Ethereum || {};
 Ethereum.Webinterface = function(){
     var that = {};
-    const SERVER_ADRESS = Ethereum.Config.SERVER_ADRESS+':3000/create-account';
+    const SERVER_ADRESS = Ethereum.Config.SERVER_ADRESS+':3000/new-account';
 
-    function getUniqueID(onCallback){
+    function getUniqueID(id,onCallback){
+        /*
         $.get( SERVER_ADRESS, function( result ) {
             onCallback(result);
+        });
+        */
+        $.ajax({
+            type: "POST",
+            url: SERVER_ADRESS,
+            data: '{"identityData":'+id+'}',
+            success: onCallback,
+            contentType: "application/json",
         });
     }
 
@@ -28,7 +37,7 @@ Ethereum.Webinterface = function(){
         console.log(data);
         $.ajax({
             type: "POST",
-            url: 'http://server.nopunkgames.space:3000/',
+            url: Ethereum.Config.SERVER_ADRESS+':3000/new-contract/',
             data: text,
             success: onSuccess,
             contentType: "application/json",
@@ -36,6 +45,17 @@ Ethereum.Webinterface = function(){
         //$.post(Ethereum.Config.SERVER_ADRESS+':3000',text);
     }
 
+    function getContracts(id,onCallback){
+        $.ajax({
+            type: "POST",
+            url: Ethereum.Config.SERVER_ADRESS+':3000/contracts/',
+            data: '{"address":'+id+'}',
+            success: onCallback,
+            contentType: "application/json",
+        });
+    }
+
+    that.getContracts = getContracts;
     that.saveContractToServer = saveContractToServer;
     that.getUniqueID = getUniqueID;
     return that;
