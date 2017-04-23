@@ -3,8 +3,10 @@ header {
 }
 
 h1 {
-    font-size: 225% !important;
+    /*font-size: 225% !important;*/
+    font-size: 8vw !important;
     color: white;
+    /*float: left;*/
     text-align: center;
 }
 
@@ -19,7 +21,10 @@ a {
 }
 
 img {
-    max-width: 80% !important;
+    max-width: 100% !important;
+    /*size: 2vw;*/
+    display: block;
+    margin: auto;
 }
 
 .fix-btn-left {
@@ -34,5 +39,17 @@ img {
 .date {
     font-size: 80%;
 }
+
+@media screen and (min-width: 768px){
+    img {
+        max-width: 50% !important;
+        /*size: 2vw;*/
+        display: block;
+        margin: auto;
+    }
+}
+
+
+
 
 
