@@ -21,7 +21,8 @@ a {
 }
 
 img {
-    /*max-width: 50% !important;*/
+    max-width: 100% !important;
+    /*size: 2vw;*/
     display: block;
     margin: auto;
 }
@@ -38,6 +39,17 @@ img {
 .date {
     font-size: 80%;
 }
+
+@media screen and (min-width: 768px){
+    img {
+        max-width: 50% !important;
+        /*size: 2vw;*/
+        display: block;
+        margin: auto;
+    }
+}
+
+
 
 
 
