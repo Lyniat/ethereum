@@ -39,9 +39,10 @@ RPC_PORT = 8545
 GAS = 20000000
 IMAGE_SIZE = 256
 
-CONTRACT_STORAGE_ADDRESS = "0x1e07cd38d85834fefbf3a6766b4d3364b9aec477"
-USER_STORAGE_ADDRESS = "0x5815d672f76ecf6ca7d249e64765452524441398"
+CONTRACT_STORAGE_ADDRESS = "0x797aab23acf20c54080b939cebca6981080cd3b7"
+USER_STORAGE_ADDRESS = "0x6eda257dcaa14c0532a943078d8be78058d255f7"
 
+counter = 0
 
 ##################################
 # signal handler
@@ -83,12 +84,9 @@ def main():
         print('unable to connect to rpc server at {}:{}'.format(RPC_HOST, RPC_PORT))
         sys.exit(-1)
 
+    method = sys.argv[1]
 
-    if sys.argv[1] == "contracts":
-        transactionHashes, identityDocuments = rpc.call(USER_STORAGE_ADDRESS, 'getUser(address)', [0x866d9f0b315afa2dcf31be291882ae9a1965f86a], ['string','string'])
-        print (transactionHashes)
-
-    elif sys.argv[1] == "newContract":
+    if method == "newContract":
         owner = sys.argv[2]
         partner = sys.argv[3]
         text = sys.argv[4]
@@ -96,134 +94,35 @@ def main():
         tx = rpc.call_with_transaction(owner, CONTRACT_STORAGE_ADDRESS,
                                        'createNewContract(string,string)', [partner, text],
                                        gas=GAS)
-        print('done, transaction id: {}'.format(tx))
+        print(format(tx))
 
-        transHash = format(tx)
-        trans = rpc.eth_getTransactionByHash(transHash)
+
+    elif method == "contractData":
+        trans_addr = "0x4ffc50cd604954b137a7dcf4b3be6678a6ef91ef9eeb42e908b985afceaf601e"
+        trans = rpc.eth_getTransactionByHash(trans_addr)
         res = Decoder.decodeABI(trans['input'], 'createNewContract(string,string)', ['string','string'])
         print(res)
 
 
-        transHashes = transHash#rpc.call(USER_STORAGE_ADDRESS, 'getUserTransactions(address)', [owner], ['string'])
-        #transHashes += "," + transHash;
+    elif method == "newUser":
+        address = sys.argv[2]
+        dataString = sys.argv[3]
 
-        tx = rpc.call_with_transaction(owner, USER_STORAGE_ADDRESS,
-                                       'setUserTransactions(string)', [transHashes],
+        tx = rpc.call_with_transaction(address, USER_STORAGE_ADDRESS,
+                                       'setUserIdentityDocs(string)', [dataString],
                                        gas=GAS)
 
-        trans = rpc.eth_getTransactionByHash(format(tx))
-        res = Decoder.decodeABI(trans['input'], 'setUserTransactions(string)', ['string'])
-        print(res)
+    elif method == "identification":
+        account_addr = sys.argv[2]
+        transactionHashes, identityDocuments = rpc.call(USER_STORAGE_ADDRESS, 'getUser(address)', [account_addr], ['string','string'])
+        print (identityDocuments)
 
+    elif method == "accounts":
+        account_id = sys.argv[2]
+        print(rpc.eth_accounts()[int(account_id)])
 
-        transHashes = transHash#rpc.call(USER_STORAGE_ADDRESS, 'getUserTransactions(address)', [partner], ['string'])
-        #transHashes += "," + transHash;
-
-        tx = rpc.call_with_transaction(partner, USER_STORAGE_ADDRESS,
-                                       'setUserTransactions(string)', [transHashes],
-                                       gas=GAS)
-
-
-        print('done, transaction id: {}'.format(tx))
-
-        trans = rpc.eth_getTransactionByHash(format(tx))
-        res = Decoder.decodeABI(trans['input'], 'setUserTransactions(string)', ['string'])
-        print(res)
-
-
-    owner = "0x866d9f0b315afa2dcf31be291882ae9a1965f86a"
-    partner = "0x115908c9272fc6b915286de90e25a24862d69988"
-
-    
-    # while False:
-    #     #
-    #     # simply read input
-    #     #
-    #     sys.stdout.write('>> ')
-    #     command = sys.stdin.readline()
-        
-    #     #
-    #     # quit?
-    #     #
-    #     if 'q' in command:
-    #         sys.exit(0)
-       
-    #     #
-    #     # call function
-    #     #
-    #     elif 'newContract' in command:
-    #         sys.stdout.write('text: ')
-    #         text = sys.stdin.readline().strip()
-
-    #         print('-' * 80)
-    #         print('sending...')
-    #         tx = rpc.call_with_transaction(owner, CONTRACT_STORAGE_ADDRESS,
-    #                                        'createNewContract(string,string)', [partner, text],
-    #                                        gas=GAS)
-    #         print('done, transaction id: {}'.format(tx))
-
-    #         transHash = format(tx)
-    #         trans = rpc.eth_getTransactionByHash(transHash)
-    #         res = Decoder.decodeABI(trans['input'], 'createNewContract(string,string)', ['string','string'])
-    #         print(res)
-
-
-    #         transHashes = transHash#rpc.call(USER_STORAGE_ADDRESS, 'getUserTransactions(address)', [owner], ['string'])
-    #         #transHashes += "," + transHash;
-
-    #         tx = rpc.call_with_transaction(owner, USER_STORAGE_ADDRESS,
-    #                                        'setUserTransactions(string)', [transHashes],
-    #                                        gas=GAS)
-
-    #         trans = rpc.eth_getTransactionByHash(format(tx))
-    #         res = Decoder.decodeABI(trans['input'], 'setUserTransactions(string)', ['string'])
-    #         print(res)
-
-
-    #         transHashes = transHash#rpc.call(USER_STORAGE_ADDRESS, 'getUserTransactions(address)', [partner], ['string'])
-    #         #transHashes += "," + transHash;
-
-    #         tx = rpc.call_with_transaction(partner, USER_STORAGE_ADDRESS,
-    #                                        'setUserTransactions(string)', [transHashes],
-    #                                        gas=GAS)
-
-
-    #         print('done, transaction id: {}'.format(tx))
-
-    #         trans = rpc.eth_getTransactionByHash(format(tx))
-    #         res = Decoder.decodeABI(trans['input'], 'setUserTransactions(string)', ['string'])
-    #         print(res)
-
-    #     #
-    #     # compose new message
-    #     #
-    #     elif 'newUser' in command:
-    #         sys.stdout.write('address: ')
-    #         address = sys.stdin.readline().strip()
-    #         sys.stdout.write('identityDocs: ')
-    #         docs = sys.stdin.readline().strip()
-    #         print('-' * 80)W
-    #         print('sending...')
-    #         tx = rpc.call_with_transaction(address, USER_STORAGE_ADDRESS,
-    #                                        'setUserIdentityDocs(string)', [docs],
-    #                                        gas=GAS)
-    #         print('done, transaction id: {}'.format(tx))
-
-    #         trans = rpc.eth_getTransactionByHash(format(tx))
-    #         res = Decoder.decodeABI(trans['input'], 'setUserIdentityDocs(string)', ['string'])
-    #         print(res)
-
-    #     #
-    #     # compose new message
-    #     #
-    #     elif 'userData' in command:
-            
-
-    #     #
-    #     # default response
-    #     #
-    #     else:
-    #         print('command not recognized')
+    else:
+        print("method not recognized!")
 
 
 ##################################

@@ -3,35 +3,96 @@
  */
 var express = require('express');
 var app = express();
-
+var async = require('async');
 var PythonShell = require('python-shell');
 var PORT = 3000;
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+var accountCounter = 0;
+var users = {};
+
 app.post('/new-contract', function (req, res) {
-
-});
-
-app.get('/identification', function (req, res) {
-
-});
-
-app.get('/contracts', function (req, res) {
+    var owner = req.body.owner;
+    var partner = req.body.partner;
+    var text = req.body.text;
 
     var options = {
-      args: ['contract', 0x866d9f0b315afa2dcf31be291882ae9a1965f86a]
+      args: ['newContract', owner, partner, text]
     };
 
     PythonShell.run('smartContract.py', options, function (err, results) {
       if (err) throw err;
-      console.log('results: %j', results);
-      res.send(results);
+      var transID = results[0];
+      if(!users[owner]) {
+        users[owner] = [transID]
+      } else {
+        users[owner].push(transID)
+      }
+      if(!users[partner]) {
+        users[partner] = [transID]
+      } else {
+        users[partner].push(transID)
+      }
+      //console.log(users);
+      res.send(users);
     });
 });
 
-app.get('/new-account', function (req, res) {
+app.post('/contract-data', function (req, res) {
+    var transID = req.body.address;
+    getContractData(transID, function(result) {
+        console.log(result);
+        res.send(result);
+    });
+});
 
+app.post('/contracts', function (req, res) {
+    var userAddress = req.body.address;
+    var contracts = [];
+    var counter = 0;
+
+    for(id in users[userAddress]) {
+        var transID = users[userAddress].id;
+        getContractData(transID, function(result) {
+            counter ++;
+            contracts.push(result);
+            if (counter == users[userAddress].length) {
+                res.send(contracts);
+            }
+        })
+    }
+});
+
+app.get('/identification', function (req, res) {
+    
+});
+
+app.post('/new-account', function (req, res) {
+    
+    var options = {
+      mode: 'text',
+      args: ['accounts', accountCounter++]
+    };
+
+    PythonShell.run('smartContract.py', options, function (err, result) {
+        if (err) res.send(err);
+        res.send(result[0]);
+    });
 });
 
 app.listen(PORT, function () {
     console.log('ethereum backend online on port ' + PORT);
 });
+
+function getContractData(transID, callback) {
+    var options = {
+      args: ['contractData', transID]
+    };
+
+    PythonShell.run('smartContract.py', options, function (err, result) {
+      if (err) throw err;
+      callback(result);
+    });
+}
